@@ -21,9 +21,15 @@ dependencies = [
     "tiktoken",
     "wandb>=0.19.9",
     "tqdm",
+    "typer>=0.15.2",
+    "loguru>=0.7.3",
+    "scikit-learn>=1.6.1",
 ]
 readme = "README.md"
-requires-python = ">= 3.11"
+requires-python = ">= 3.12"
+
+[project.scripts]
+ai4s = "ai4s.__main__:app"
 
 [project.optional-dependencies]
 openalex = [
@@ -39,4 +45,7 @@ build-backend = "hatchling.build"
 allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
-packages = ["ai_scientist"]
+packages = ["ai_scientist", "ai4s"]
+
+[tool.ruff.lint]
+extend-select = ["I", "T20"]

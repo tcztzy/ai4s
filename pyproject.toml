@@ -1,0 +1,51 @@
+[project]
+name = "ai4s"
+version = "0.1.0"
+description = "The AI for Scientist: Towards Fully Automated Open-Ended Scientific Discovery 🧑‍🔬"
+authors = [
+    { name = "Tang Ziya", email = "tcztzy@gmail.Com" }
+]
+dependencies = [
+    "anthropic",
+    "aider-chat",
+    "backoff",
+    "openai",
+    "google-generativeai",
+    "matplotlib",
+    "pypdf",
+    "pymupdf4llm",
+    "torch",
+    "numpy",
+    "transformers",
+    "datasets",
+    "tiktoken",
+    "wandb>=0.19.9",
+    "tqdm",
+    "typer>=0.15.2",  # for pretty cli
+    "loguru>=0.7.3",  # for pretty log
+    "instructor>=1.7.9",  # for parsing json
+]
+readme = "README.md"
+requires-python = ">= 3.12"
+
+[project.scripts]
+ai4s = "ai4s.__main__:app"
+
+[project.optional-dependencies]
+openalex = [
+    "pyalex",
+]
+full = ["ai4s[openalex]"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["ai_scientist", "ai4s"]
+
+[tool.ruff.lint]
+extend-select = ["I", "T20"]
